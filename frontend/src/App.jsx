@@ -1,24 +1,36 @@
-import React from 'react';
-
-import PhotoListItem from './components/PhotoListItem';
+import {React, useState} from 'react';
+import PhotoListBatch from 'components/PhotoListBatch';
 import './App.scss';
-
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
+import HomeRoute from 'routes/HomeRoute';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  const [favoriteImages, setFavoriteImages] = useState([]);
+
+  const isActive = (imageId) => { //check if the favorite icon is clicked or not
+    return favoriteImages.includes(imageId)
+  }
+
+  const addFavorite = (imageId) => { // add favorite photo from the list of Favorite by image id
+    setFavoriteImages(currentState => [...currentState, imageId])
+  }
+
+  const removeFavorite = (imageId) => { // remove favorite photo from the list of Favorite by image id
+    setFavoriteImages(currentState => currentState.filter(currentId => currentId !== imageId))
+  }
+
+  const toggleFavImage = (imageId) => { //handle clicking of favorite icon to add or remove photo
+    if (isActive(imageId)) {
+      removeFavorite(imageId)
+    } else {
+      addFavorite(imageId)
+    };
+  }
+
   return (
     <div className="App">
-      <PhotoListItem sampleData={sampleDataForPhotoListItem}/>
+      <HomeRoute isFavPhotoExist={favoriteImages.length>0} />
+      <PhotoListBatch toggleFavImage={toggleFavImage} isActive={isActive} />
     </div>
   );
 };
