@@ -7,6 +7,8 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [favoriteImages, setFavoriteImages] = useState([]);
+  // State to track modal visibility
+  const [isModalOpen, setModalOpen] = useState(true);
 
   const isActive = (imageId) => { //check if the favorite icon is clicked or not
     return favoriteImages.includes(imageId)
@@ -20,6 +22,11 @@ const App = () => {
     setFavoriteImages(currentState => currentState.filter(currentId => currentId !== imageId))
   }
 
+  const closeModal = () => {
+    // Close the modal by setting isModalOpen to false
+    setModalOpen(false);
+  };
+
   const toggleFavImage = (imageId) => { //handle clicking of favorite icon to add or remove photo
     if (isActive(imageId)) {
       removeFavorite(imageId)
@@ -30,7 +37,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <PhotoDetailsModal />
+      <PhotoDetailsModal isModalOpen={isModalOpen} closeModal={closeModal} />
       <HomeRoute isFavPhotoExist={favoriteImages.length > 0} />
       <PhotoListBatch toggleFavImage={toggleFavImage} isActive={isActive} />
     </div>
@@ -38,3 +45,5 @@ const App = () => {
 };
 
 export default App;
+
+
