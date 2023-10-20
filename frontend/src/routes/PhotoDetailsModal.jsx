@@ -3,8 +3,8 @@ import {React} from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({isModalOpen, closeModal}) => {  
-
+const PhotoDetailsModal = ({ selectedPhoto, isModalOpen, closeModal}) => {  
+  console.log(selectedPhoto.id); //This should be 1
   return (
     // Render the modal only if isModalOpen is true
     isModalOpen && (

@@ -3,6 +3,7 @@ import PhotoListBatch from 'components/PhotoListBatch';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import photos from "./mocks/photos.js";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
@@ -37,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <PhotoDetailsModal isModalOpen={isModalOpen} closeModal={closeModal} />
+      <PhotoDetailsModal selectedPhoto={photos[0]} isModalOpen={isModalOpen} closeModal={closeModal} />
       <HomeRoute isFavPhotoExist={favoriteImages.length > 0} />
       <PhotoListBatch toggleFavImage={toggleFavImage} isActive={isActive} />
     </div>
