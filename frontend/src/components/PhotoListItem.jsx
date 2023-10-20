@@ -8,7 +8,7 @@ const PhotoListItem = (props) => {
   const { id, user, urls, location } = props.sampleDataForPhotoListItem;
   const { city, country } = location;
   const { profile, name } = user;
-  const { regular } = urls;
+  const { regular, full } = urls;
 
   return (
     <li key={id} className="photo-list__item" >
