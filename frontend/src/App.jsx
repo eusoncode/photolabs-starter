@@ -3,13 +3,15 @@ import PhotoListBatch from 'components/PhotoListBatch';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import photos from "./mocks/photos.js";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  // State to store favorite images
   const [favoriteImages, setFavoriteImages] = useState([]);
   // State to track modal visibility
-  const [isModalOpen, setModalOpen] = useState(true);
+  const [isModalOpen, setModalOpen] = useState(false);
+  // State to capture clicked photo
+  const [clickedPhoto, setClickedPhoto] = useState(null);
 
   const isActive = (imageId) => { //check if the favorite icon is clicked or not
     return favoriteImages.includes(imageId)
@@ -33,18 +35,16 @@ const App = () => {
       removeFavorite(imageId)
     } else {
       addFavorite(imageId)
-    };
+    }; 
   }
 
   return (
     <div className="App">
-      <PhotoDetailsModal selectedPhoto={photos[0]} isModalOpen={isModalOpen} closeModal={closeModal} />
+      <PhotoDetailsModal clickedPhoto={clickedPhoto} isModalOpen={isModalOpen} closeModal={closeModal} toggleFavImage={toggleFavImage} isActive={isActive}/>
       <HomeRoute isFavPhotoExist={favoriteImages.length > 0} />
-      <PhotoListBatch toggleFavImage={toggleFavImage} isActive={isActive} />
+      <PhotoListBatch setClickedPhoto={setClickedPhoto} setModalOpen={setModalOpen} toggleFavImage={toggleFavImage} isActive={isActive} />
     </div>
   );
 };
 
 export default App;
-
-

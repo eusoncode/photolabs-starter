@@ -4,15 +4,15 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 //Renders individual photoes and their favorite icons
-const PhotoListItem = (props) => {
-  const { id, user, urls, location } = props.sampleDataForPhotoListItem;
+const PhotoListItem = ({ setClickedPhoto, setModalOpen, sampleDataForPhotoListItem, toggleFavImage, isActive }) => {
+  const { id, user, urls, location } = sampleDataForPhotoListItem;
   const { city, country } = location;
   const { profile, name } = user;
-  const { regular, full } = urls;
+  const { regular} = urls;
 
   return (
-    <li key={id} className="photo-list__item" >
-      <PhotoFavButton handleIconClick={() => props.toggleFavImage(id)} isActive={props.isActive(id)}  />
+    <li key={id} className="photo-list__item" onClick={setClickedPhoto}>
+      <PhotoFavButton handleIconClick={() => toggleFavImage(id)} isActive={isActive(id)}  />
       <img className="photo-list__image" src={regular} /> <br />
       <section className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} />

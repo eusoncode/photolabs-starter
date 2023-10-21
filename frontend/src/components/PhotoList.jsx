@@ -5,11 +5,12 @@ import PhotoListItem from "./PhotoListItem";
 
 //Renders a list of PhotoListItems
 const PhotoList = (props) => {
+  console.log(props.listOfPhotos);
   return (
     <>
       <ul className="photo-list">
         {props.listOfPhotos.map((element, index) => 
-          <PhotoListItem toggleFavImage={props.toggleFavImage} isActive={props.isActive} sampleDataForPhotoListItem={element} key={index} />          
+          <PhotoListItem setClickedPhoto={() => { props.setClickedPhoto(element);  props.setModalOpen(true)}}  setModalOpen={props.setModalOpen} toggleFavImage={props.toggleFavImage} isActive={props.isActive} sampleDataForPhotoListItem={element} key={index} />          
         )}
       </ul>
     </>
