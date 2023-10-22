@@ -3,12 +3,13 @@ import PhotoListBatch from 'components/PhotoListBatch';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData from "hooks/useApplicationData";
+// import useApplicationData from "hooks/useApplicationData";
+import useApplicationData_Reducer from "hooks/useApplicationData_Reducer";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   // Orgnizing our Logic
-  const { state, actions } = useApplicationData();
+  const { state, actions } = useApplicationData_Reducer();
   const { favoriteImages, isModalOpen, clickedPhoto } = state;
   const { isActive, toggleFavImage, closeModal, setModalOpen, setClickedPhoto} = actions;
 

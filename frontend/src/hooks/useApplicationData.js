@@ -9,12 +9,7 @@ const useApplicationData = () => {
   // State to capture clicked photo
   const [clickedPhoto, setClickedPhoto] = useState(null);
 
-  const state = {
-    favoriteImages,setFavoriteImages,
-    isModalOpen, setModalOpen,
-    clickedPhoto, setClickedPhoto
-  };
-
+  
   const isActive = (imageId) => { //check if the favorite icon is clicked or not
     return favoriteImages.includes(imageId)
   }
@@ -48,8 +43,6 @@ const useApplicationData = () => {
     },
     actions: {
       isActive,
-      addFavorite,
-      removeFavorite,
       closeModal,
       toggleFavImage,
       setModalOpen,
