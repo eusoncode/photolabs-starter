@@ -13,20 +13,18 @@ const PhotoDetailsModal = ({ clickedPhoto, isModalOpen, closeModal, toggleFavIma
         <button className="photo-details-modal__close-button" onClick={closeModal}>
           <img src={closeSymbol} alt="close symbol" />
         </button>
-        <div className="photo-list__item" >          
-          <img className="photo-details-modal__image" src={clickedPhoto.urls.full} /> <br />
-          <section className="photo-list__user-details">
-            <img className="photo-list__user-profile" src={clickedPhoto.user.profile} />
-            <div className="photo-list__user-info">
-              <p className="photo-list__user-name">{clickedPhoto.user.name}</p>
-              <p className="photo-list__user-location" >{`${clickedPhoto.location.city}, ${clickedPhoto.location.country}`}</p>
-            </div>        
-          </section>
-          <p>Similar Photos</p>
-          <section className="photo-details-modal__images">  
-            <PhotoList listOfPhotos={[...Object.values(clickedPhoto.similar_photos)]} toggleFavImage={toggleFavImage} isActive={isActive} />
-          </section>
-        </div>        
+        <img className="photo-details-modal__image" src={clickedPhoto.urls.full} />
+        <section className="photo-details-modal__photographer-details">
+          <img className="photo-details-modal__photographer-profile" src={clickedPhoto.user.profile} />
+          <div className="photo-details-modal__photographer-info">
+            <p className="photo-details-modal__photographer-name">{clickedPhoto.user.name}</p>
+            <p className="photo-details-modal__photographer-location" >{`${clickedPhoto.location.city}, ${clickedPhoto.location.country}`}</p>
+          </div>        
+        </section>
+        <section className='photo-details-modal__images' > 
+          <p>Similar Photos</p>           
+          <PhotoList listOfPhotos={[...Object.values(clickedPhoto.similar_photos)]} toggleFavImage={toggleFavImage} isActive={isActive} />
+        </section>     
       </div>
     )
   );
