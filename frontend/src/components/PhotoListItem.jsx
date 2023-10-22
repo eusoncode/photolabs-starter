@@ -11,9 +11,9 @@ const PhotoListItem = ({ setClickedPhoto, setModalOpen, sampleDataForPhotoListIt
   const { regular} = urls;
 
   return (
-    <li key={id} className="photo-list__item" onClick={setClickedPhoto}>
+    <li key={id} className="photo-list__item">
       <PhotoFavButton handleIconClick={() => toggleFavImage(id)} isActive={isActive(id)}  />
-      <img className="photo-list__image" src={regular} /> <br />
+      <img className="photo-list__image" src={regular} onClick={setClickedPhoto}/> <br />
       <section className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} />
         <div className="photo-list__user-info">

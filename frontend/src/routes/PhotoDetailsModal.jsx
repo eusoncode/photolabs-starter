@@ -22,7 +22,7 @@ const PhotoDetailsModal = ({ clickedPhoto, isModalOpen, closeModal, toggleFavIma
           </div>        
         </section>
         <section className='photo-details-modal__images' > 
-          <p>Similar Photos</p>           
+          {/* <p>Similar Photos</p>            */}
           <PhotoList listOfPhotos={[...Object.values(clickedPhoto.similar_photos)]} toggleFavImage={toggleFavImage} isActive={isActive} />
         </section>     
       </div>
