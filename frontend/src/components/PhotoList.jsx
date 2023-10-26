@@ -5,7 +5,6 @@ import PhotoListItem from "./PhotoListItem";
 
 //Renders a list of PhotoListItems
 const PhotoList = (props) => {
-  console.log(props.listOfPhotos);
   return (
     <>
       <ul className="photo-list">

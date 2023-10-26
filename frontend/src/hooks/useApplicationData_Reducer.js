@@ -1,9 +1,12 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
+import axios from 'axios';
 
 const initialState = {
   favoriteImages: [],
   isModalOpen: false,
   clickedPhoto: null,
+  photoData: [],
+  topicData: []
 };
 
 const ACTIONS = {
@@ -11,6 +14,8 @@ const ACTIONS = {
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_MODAL_OPEN: 'SET_MODAL_OPEN',
   SET_CLICKED_PHOTO: 'SET_CLICKED_PHOTO',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
 };
 
 const appReducer = (state, action) => {
@@ -33,6 +38,18 @@ const appReducer = (state, action) => {
     case ACTIONS.SET_CLICKED_PHOTO:
       // Handle setting the clicked photo
       return { ...state, clickedPhoto: action.payload.photo };
+    
+    case ACTIONS.SET_PHOTO_DATA :
+      // Handle setting the photoData
+      return { ...state, photoData: action.payload.photoData };
+  
+    case ACTIONS.SET_TOPIC_DATA :
+      // Handle setting the photoData
+      return { ...state, topicData: action.payload.topicData };
+    
+    case ACTIONS.GET_PHOTOS_BY_TOPICS :
+      // Handle setting the photoData for a specific topic
+      return { ...state, photoData: action.payload.topicPhotos };
 
     default:
       return state;
@@ -76,6 +93,35 @@ const useApplicationData_Reducer = () => {
     }
   }
 
+  // Fetching photos and topics when the page is rendered
+  useEffect(() => {
+    const promisePhotos = axios.get('/api/photos');
+    const promiseTopics = axios.get('/api/topics');
+  
+    Promise.all([promisePhotos, promiseTopics])
+      .then((arrayOfPhotosAndTopics) => {
+        const photos = arrayOfPhotosAndTopics[0].data;
+        const topics = arrayOfPhotosAndTopics[1].data;
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photoData: photos } });
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topicData: topics } });
+      })
+      .catch((error) => {
+        console.error('Error fetching photos or topics:', error);
+      });
+  }, [])
+
+  const setClickedTopic = (topic_id) => {
+    // Fetch photos for the specific topic
+    axios.get(`/api/topics/photos/${topic_id}`)
+      .then((response) => {
+        const topicPhotos = response.data;
+        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: { topicPhotos: topicPhotos } });
+      })
+      .catch((error) => {
+        console.error('Error fetching photos by topic:', error);
+      });
+  };
+  
   return {
     state,
     actions: {
@@ -84,6 +130,7 @@ const useApplicationData_Reducer = () => {
       toggleFavImage,
       setModalOpen,
       setClickedPhoto,
+      setClickedTopic
     },
   };
 };

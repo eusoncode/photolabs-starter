@@ -3,10 +3,11 @@ import {Fragment, React} from "react";
 import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
-  const { id, slug, title } = props.sampleDataForTopicList;
+  const {handleIconClick, sampleDataForTopicList} = props;
+  const { title } = sampleDataForTopicList;
 
   return (
-    <div className="topic-list__item">
+    <div className="topic-list__item" onClick={handleIconClick}>
       {title}
     </div>
   );
