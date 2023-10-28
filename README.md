@@ -1,5 +1,5 @@
 # react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+The PhotoLabs project is a single page web application for Web Development React course programming. It demostrates effective use of react components, custom hooks and other features e.g useReducer in react's library.
 
 # Photolabs
 
