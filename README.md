@@ -27,10 +27,11 @@ npm start
 ## Screenshots
 
 PhotoLab homepage
-!["Screenshot of Photolab"](https://github.com/eusoncode/PhotoLab/blob/master/docs/PhotoLab_homepage.png)
+!["Screenshot of Photolab"](https://github.com/eusoncode/photolabs-starter/blob/main/frontend/docs/PhotoLab_homepage.png?raw=true)
+
 
 PhotoLab favorite image liked
-!["Screenshot of Photolab"](https://github.com/eusoncode/PhotoLab/blob/master/docs/PhotoLab_favImage_liked.png)
+!["Screenshot of Photolab"](https://github.com/eusoncode/photolabs-starter/blob/main/frontend/docs/PhotoLab_favImage_liked.png?raw=true)
 
 PhotoLab favorite image selected
-!["Screenshot of Photolab"](https://github.com/eusoncode/PhotoLab/blob/master/docs/PhotoLab_favImage_selected.png)
+!["Screenshot of Photolab"](https://github.com/eusoncode/photolabs-starter/blob/main/frontend/docs/PhotoLab_favImage_selected.png?raw=true)
