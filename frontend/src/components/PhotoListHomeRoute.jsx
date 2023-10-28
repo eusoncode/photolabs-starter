@@ -1,9 +1,8 @@
 import {React} from 'react';
 import PhotoList from 'components/PhotoList';
-// import usePhotoList from "hooks/usePhotoList";
 
-// Renders list of photos
-const PhotoListBatch = (props) => {
+// Defines list of photos
+const PhotoListHomeRoute = (props) => {
   const listOfPhotos = props.photoData; //import the photoData fetched from server
   
   return (
@@ -11,4 +10,4 @@ const PhotoListBatch = (props) => {
   );
 };
 
-export default PhotoListBatch;
+export default PhotoListHomeRoute;

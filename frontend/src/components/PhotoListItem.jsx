@@ -3,7 +3,7 @@ import {React} from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-//Renders individual photoes and their favorite icons
+//Renders individual photos and defines their favorite icons
 const PhotoListItem = ({ setClickedPhoto, setModalOpen, sampleDataForPhotoListItem, toggleFavImage, isActive }) => {
   const { id, user, urls, location } = sampleDataForPhotoListItem;
   const { city, country } = location;

@@ -21,8 +21,7 @@ const PhotoDetailsModal = ({ clickedPhoto, isModalOpen, closeModal, toggleFavIma
             <p className="photo-details-modal__photographer-location" >{`${clickedPhoto.location.city}, ${clickedPhoto.location.country}`}</p>
           </div>        
         </section>
-        <section className='photo-details-modal__images' > 
-          {/* <p>Similar Photos</p>            */}
+        <section className='photo-details-modal__images' >
           <PhotoList listOfPhotos={[...Object.values(clickedPhoto.similar_photos)]} toggleFavImage={toggleFavImage} isActive={isActive} />
         </section>     
       </div>

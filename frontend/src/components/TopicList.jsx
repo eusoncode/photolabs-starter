@@ -3,13 +3,9 @@ import React from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
+// Renders the list of topic items
 const TopicList = (props) => {
   const { listOfTopics } = props;
-
-  if (!listOfTopics || !Array.isArray(listOfTopics) || listOfTopics.length === 0) {
-    // Handle cases where listOfTopics is undefined or empty
-    return <div>No topics available.</div>;
-  }
 
   return (
     <div className="top-nav-bar__topic-list">
