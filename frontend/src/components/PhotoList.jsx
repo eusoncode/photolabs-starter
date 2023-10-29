@@ -8,7 +8,12 @@ const PhotoList = (props) => {
   return (
     <ul className="photo-list">
       {props.listOfPhotos.map((element, index) => 
-        <PhotoListItem setClickedPhoto={() => { props.setClickedPhoto(element);  props.setModalOpen(true)}} toggleFavImage={props.toggleFavImage} isActive={props.isActive} sampleDataForPhotoListItem={element} key={index} />          
+        <PhotoListItem
+          setClickedPhoto={() => { props.setClickedPhoto(element); props.setModalOpen(true) }}
+          toggleFavImage={props.toggleFavImage}
+          isActive={props.isActive}
+          sampleDataForPhotoListItem={element} key={index}
+        />          
       )}
     </ul>
   );
