@@ -13,10 +13,27 @@ const App = () => {
   const { isActive, toggleFavImage, closeModal, setModalOpen, setClickedPhoto, setClickedTopic} = actions;
 
   return (
-    <div className="App">
-      <PhotoDetailsModal clickedPhoto={clickedPhoto} isModalOpen={isModalOpen} closeModal={closeModal} toggleFavImage={toggleFavImage} isActive={isActive}/>
-      <TopicListHomeRoute setClickedTopic={setClickedTopic} topicData={topicData} isFavPhotoExist={favoriteImages.length > 0} />
-      <PhotoListHomeRoute photoData={photoData} setClickedPhoto={setClickedPhoto} setModalOpen={setModalOpen} toggleFavImage={toggleFavImage} isActive={isActive} />
+    <div className="App">      
+      {isModalOpen && (
+        <PhotoDetailsModal
+          clickedPhoto={clickedPhoto}
+          closeModal={closeModal}
+          toggleFavImage={toggleFavImage}
+          isActive={isActive}
+        />
+      )}
+      <TopicListHomeRoute
+        setClickedTopic={setClickedTopic}
+        topicData={topicData}
+        isFavPhotoExist={favoriteImages.length > 0}
+      />
+      <PhotoListHomeRoute
+        photoData={photoData}
+        setClickedPhoto={setClickedPhoto}
+        setModalOpen={setModalOpen}
+        toggleFavImage={toggleFavImage}
+        isActive={isActive}
+      />
     </div>
   );
 };
