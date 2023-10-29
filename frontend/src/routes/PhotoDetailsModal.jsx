@@ -4,6 +4,7 @@ import '../styles/PhotoDetailsModal.scss'
 import "../styles/PhotoListItem.scss";
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ clickedPhoto, closeModal, toggleFavImage, isActive }) => { 
   return (
@@ -13,6 +14,7 @@ const PhotoDetailsModal = ({ clickedPhoto, closeModal, toggleFavImage, isActive 
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className='photo-details-modal__images'>
+        <PhotoFavButton handleIconClick={() => toggleFavImage(clickedPhoto.id)} isActive={isActive(clickedPhoto.id)} />
         <img className="photo-details-modal__image" src={clickedPhoto.urls.full} />
         <section className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={clickedPhoto.user.profile} />
