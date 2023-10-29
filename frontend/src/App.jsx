@@ -1,5 +1,5 @@
 import {React} from 'react';
-import PhotoListHomeRoute from 'components/PhotoListHomeRoute';
+import PhotoListHomeRoute from 'routes/PhotoListHomeRoute';
 import './App.scss';
 import TopicListHomeRoute from 'routes/TopicListHomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
