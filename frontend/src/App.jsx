@@ -3,12 +3,12 @@ import PhotoListHomeRoute from 'components/PhotoListHomeRoute';
 import './App.scss';
 import TopicListHomeRoute from 'routes/TopicListHomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import useApplicationData_Reducer from "hooks/useApplicationData_Reducer";
+import useApplicationData from "hooks/useApplicationData";
 
 // Define the main App component
 const App = () => {
   // Use the custom hook to manage application data
-  const { state, actions } = useApplicationData_Reducer();
+  const { state, actions } = useApplicationData();
   const { favoriteImages, isModalOpen, clickedPhoto, photoData, topicData } = state;
   const { isActive, toggleFavImage, closeModal, setModalOpen, setClickedPhoto, setClickedTopic} = actions;
 

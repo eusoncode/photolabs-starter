@@ -61,7 +61,7 @@ const appReducer = (state, action) => {
 }
 
 // Custom hook for managing application data with a reducer
-const useApplicationData_Reducer = () => {
+const useApplicationData = () => {
   // Use the useReducer hook to manage state with the appReducer function
   const [state, dispatch] = useReducer(appReducer, initialState);
 
@@ -140,4 +140,4 @@ const useApplicationData_Reducer = () => {
   };
 };
 
-export default useApplicationData_Reducer;
+export default useApplicationData;
